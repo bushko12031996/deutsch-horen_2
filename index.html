@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch Hören 18.0 — Додавання слів двома мовами</title>
+<style>
+:root{
+  font-family:Inter, "Segoe UI", Arial, sans-serif;
+  color:#1d2b3a;background:#f3f6f8;
+  --ink:#1d2b3a;--muted:#6d7b89;--line:#e1e8ec;
+  --teal:#087f78;--teal-dark:#06645f;--teal-soft:#e8f5f2;
+  --gold:#f1b84b;--surface:#fff;--shadow:0 8px 28px rgba(27,52,67,.06)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;padding:30px 17px 112px;background:linear-gradient(180deg,#eaf4f2 0,#f3f6f8 320px,#f3f6f8 100%)}
+.wrap{max-width:1000px;margin:auto}
+.hero{position:relative;overflow:hidden;padding:30px 32px 24px;border-radius:24px;color:#fff;background:linear-gradient(120deg,#123e4b 0%,#087f78 68%,#15958a 100%);box-shadow:0 16px 36px rgba(9,85,81,.18)}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-60px;top:-120px;box-shadow:0 0 0 28px rgba(255,255,255,.035),0 0 0 58px rgba(255,255,255,.025)}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:12px;position:relative;z-index:1}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#bce8df}
+.version{font-size:11px;font-weight:700;letter-spacing:1px;padding:7px 10px;border:1px solid rgba(255,255,255,.25);border-radius:30px;color:#e4f6f1}
+h1{font-size:clamp(32px,5vw,43px);line-height:1.1;margin:21px 0 9px;letter-spacing:-1.2px;position:relative;z-index:1}
+.flag{font-size:.8em;margin-right:5px}
+.hero-copy{max-width:660px;color:#e0f0ed;font-size:16px;line-height:1.6;margin:0;position:relative;z-index:1}
+.quick-nav{
+ position:fixed;left:50%;bottom:14px;transform:translateX(-50%);
+ width:min(1000px,calc(100% - 34px));display:flex;justify-content:center;
+ flex-wrap:wrap;gap:7px;padding:10px 12px;z-index:1000;
+ border:1px solid rgba(211,225,226,.95);border-radius:18px;
+ background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+ box-shadow:0 8px 30px rgba(27,52,67,.16)
+}
+.quick-nav a{color:#24515a;text-decoration:none;font-size:13px;font-weight:750;
+ padding:10px 14px;border:1px solid transparent;border-radius:11px;
+ background:#edf5f3;transition:background .18s,border-color .18s}
+.quick-nav a:hover{background:#dcefeb;border-color:#c4dfd9}
+.quick-nav a:focus-visible{outline:3px solid rgba(8,127,120,.3);outline-offset:2px}
+
+h2{font-size:19px;line-height:1.3;margin:0 0 16px;color:var(--ink);letter-spacing:-.25px}
+p{color:var(--muted);line-height:1.6}
+.muted,.small{color:var(--muted)}.small{font-size:12px;line-height:1.5}
+label{font-weight:700;font-size:14px;color:#334554}
+textarea,input[type=text],select{
+ display:block;width:100%;margin-top:8px;padding:12px 13px;border:1px solid #d4dfe3;
+ border-radius:11px;font:15px inherit;background:#fbfdfd;color:var(--ink);outline:none;transition:border-color .18s,box-shadow .18s
+}
+textarea{min-height:105px;resize:vertical;line-height:1.5}
+textarea:focus,input[type=text]:focus,select:focus{border-color:#15958a;box-shadow:0 0 0 3px rgba(21,149,138,.12);background:#fff}
+button{border:1px solid #d6e1e4;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;cursor:pointer;background:#f1f6f6;color:#29404a;transition:transform .16s,background .16s,border-color .16s}
+button:hover{background:#e5f0ef;border-color:#b8d4d0;transform:translateY(-1px)}
+button.primary{background:var(--teal);color:white;border-color:var(--teal)}
+button.primary:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
+button.danger{color:#a43c3c;background:#fff4f2;border-color:#f1d8d4}
+button.danger:hover{background:#ffe9e5}
+button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0}
+.card{background:var(--surface);border:1px solid rgba(215,226,229,.9);border-radius:18px;padding:21px 22px;margin-top:17px;box-shadow:var(--shadow)}
+.card h2{display:flex;align-items:center;gap:9px}
+.card h2:after{content:"";height:1px;background:var(--line);flex:1;margin-left:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid #edf1f2}
+th{color:#6c7d87;font-size:11px;text-transform:uppercase;letter-spacing:.6px;background:#f7faf9}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#f7fbfa}
+.wordde{font-weight:700;color:#213d48}.empty{text-align:center;color:var(--muted);padding:18px}
+.status{font-size:13px;color:#5e707a;margin-top:12px;min-height:20px;line-height:1.5}
+.player{text-align:center;background:linear-gradient(180deg,#f7fbfa,#f1f8f6);border:1px solid #e1eeeb;border-radius:15px;padding:19px}
+.word{font-size:clamp(26px,4vw,36px);font-weight:750;color:#183c46;margin:13px 0}
+.translation{font-size:22px;color:#557078;margin:10px 0}
+.options{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:13px;font-size:14px}.options label{font-weight:500}
+input[type=checkbox]{margin-right:5px;accent-color:var(--teal)}
+#reviewCard{border-color:#cfe6df;background:linear-gradient(145deg,#fff 0%,#fbfefd 100%)}
+#reviewCard .player{background:linear-gradient(135deg,#eaf6f2,#f8fbfa)}
+#reviewCard .word{color:#08766f}
+#category{background-color:#f6fbfa}
+#backupStatus,#customCategoryStatus{background:#f5f9f8;padding:9px 11px;border-radius:9px}
+@media(max-width:650px){
+ body{padding:14px 10px 120px}
+ .hero{padding:23px 19px 20px;border-radius:18px}
+ h1{font-size:31px}.hero-copy{font-size:14px}
+ .card{padding:16px 14px;border-radius:15px}
+ .grid{grid-template-columns:1fr}
+ .card h2{font-size:17px}
+ .actions button{flex:1 1 auto}
+ .quick-nav{bottom:8px;width:calc(100% - 16px);gap:4px;padding:7px;border-radius:14px}
+ .quick-nav a{font-size:11px;padding:8px 9px;border-radius:9px}
+ th,td{padding:9px 7px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+.dashboard{padding:23px 25px;background:linear-gradient(145deg,#fff 0%,#f7fbfa 100%);border-color:#d8e9e5}
+.dashboard-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.dashboard-heading h2{margin:5px 0 4px;font-size:23px}
+.dashboard-heading h2:after{display:none}
+.dashboard-heading p{margin:0}
+.dashboard-kicker{font-size:10px;font-weight:800;letter-spacing:1.6px;color:#078078}
+.dashboard-actions{display:flex;gap:9px;flex-wrap:wrap}
+.dashboard-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:750}
+.dash-primary{background:#087f78;color:#fff}.dash-primary:hover{background:#06645f}
+.dash-secondary{background:#eaf4f2;color:#17665f;border:1px solid #d4e7e2}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:20px}
+.stat-tile{min-width:0;padding:15px 16px;border:1px solid #e3ecea;border-radius:13px;background:#fff;display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.stat-icon{grid-row:span 2;font-size:22px}
+.stat-number{font-size:25px;font-weight:800;line-height:1.15;color:#164b4c}
+.stat-label{font-size:11px;color:#72818a;margin-top:3px}
+.dashboard-note{font-size:12px;margin:14px 0 0;padding-top:12px;border-top:1px solid #e7efed}
+@media(max-width:720px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard{padding:18px}.dashboard-actions{width:100%}.dashboard-actions a{flex:1}}
+
+.hero-tools{display:flex;align-items:center;gap:10px;position:relative;z-index:2}
+.theme-control{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:#e8f7f5;white-space:nowrap}
+.theme-control select{display:inline-block;width:auto;min-width:125px;margin:0;padding:7px 26px 7px 9px;min-height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.13);color:#fff;font-size:12px}
+.theme-control select option{color:#1d2b3a;background:#fff}
+html[data-theme="winter"]{--teal:#3979b8;--teal-dark:#285f98;--teal-soft:#eaf3fc;--ink:#20364d;--muted:#71849a;--line:#dce8f3}
+html[data-theme="winter"] body{background:linear-gradient(180deg,#e6f1fb 0,#f3f7fb 340px,#f3f7fb 100%)}
+html[data-theme="winter"] .hero{background:linear-gradient(120deg,#173b63 0%,#3979b8 65%,#73a9d8 100%);box-shadow:0 16px 36px rgba(35,83,132,.18)}
+html[data-theme="winter"] .dashboard{background:linear-gradient(145deg,#fff 0%,#f1f7fd 100%);border-color:#d5e4f2}
+html[data-theme="winter"] .stat-number,html[data-theme="winter"] #reviewCard .word{color:#326fa9}
+html[data-theme="winter"] #reviewCard{border-color:#d1e1f1}
+html[data-theme="winter"] #reviewCard .player{background:linear-gradient(135deg,#eaf3fc,#f8fbff)}
+html[data-theme="winter"] .dash-secondary{background:#edf5fc;color:#315f8c;border-color:#d6e5f2}
+html[data-theme="forest"]{--teal:#477b55;--teal-dark:#345f40;--teal-soft:#edf5ee;--ink:#263b2d;--muted:#758578;--line:#e0e9e0}
+html[data-theme="forest"] body{background:linear-gradient(180deg,#eaf2e9 0,#f4f7f2 340px,#f4f7f2 100%)}
+html[data-theme="forest"] .hero{background:linear-gradient(120deg,#263f31 0%,#477b55 68%,#79a77b 100%)}
+html[data-theme="forest"] .stat-number,html[data-theme="forest"] #reviewCard .word{color:#477b55}
+html[data-theme="forest"] #reviewCard .player{background:linear-gradient(135deg,#edf5ed,#fbfdf9)}
+html[data-theme="sunset"]{--teal:#b66a43;--teal-dark:#925234;--teal-soft:#fbf0e8;--ink:#44352e;--muted:#8a776d;--line:#eee1d8}
+html[data-theme="sunset"] body{background:linear-gradient(180deg,#f8eee6 0,#faf6f2 340px,#faf6f2 100%)}
+html[data-theme="sunset"] .hero{background:linear-gradient(120deg,#603f36 0%,#b66a43 68%,#d59a67 100%)}
+html[data-theme="sunset"] .stat-number,html[data-theme="sunset"] #reviewCard .word{color:#a85f3b}
+html[data-theme="sunset"] #reviewCard .player{background:linear-gradient(135deg,#fbf0e8,#fffaf5)}
+@media(max-width:650px){.hero-tools{gap:6px;flex-wrap:wrap;justify-content:flex-end}.theme-control{font-size:10px}.theme-control select{min-width:105px}.hero-top{align-items:center}}
+
+/* Dusty Rose — м'яка пудрова тема */
+html[data-theme="dustyrose"]{
+ --ink:#51434a;--muted:#8b7c82;--line:#eee2e5;
+ --teal:#b77f91;--teal-dark:#9e687b;--teal-soft:#f8edf0;
+ --surface:#fffdfd;--shadow:0 7px 24px rgba(107,76,88,.055);
+ color:var(--ink);background:#faf5f5
+}
+html[data-theme="dustyrose"] body{
+ background:linear-gradient(180deg,#f5e9ec 0,#faf5f5 350px,#faf5f5 100%)
+}
+html[data-theme="dustyrose"] .hero{
+ color:#fff;background:linear-gradient(120deg,#80616e 0%,#ad7d8c 65%,#c69aa6 100%);
+ box-shadow:0 14px 34px rgba(117,78,93,.13)
+}
+html[data-theme="dustyrose"] .eyebrow{color:#f6e6eb}
+html[data-theme="dustyrose"] .version{color:#fff0f3}
+html[data-theme="dustyrose"] .hero-copy{color:#f9edf0}
+html[data-theme="dustyrose"] .quick-nav{
+ border-color:#ead9de;background:rgba(255,251,252,.95);
+ box-shadow:0 7px 25px rgba(107,76,88,.12)
+}
+html[data-theme="dustyrose"] .quick-nav a{
+ color:#765565;background:#f5e9ed
+}
+html[data-theme="dustyrose"] .quick-nav a:hover{
+ background:#ecd9e0;border-color:#dfc2cc
+}
+html[data-theme="dustyrose"] h2{color:#51434a}
+html[data-theme="dustyrose"] label{color:#66545d}
+html[data-theme="dustyrose"] textarea,
+html[data-theme="dustyrose"] input[type=text],
+html[data-theme="dustyrose"] select{
+ border-color:#e8d9de;background:#fffafa;color:#51434a
+}
+html[data-theme="dustyrose"] textarea:focus,
+html[data-theme="dustyrose"] input[type=text]:focus,
+html[data-theme="dustyrose"] select:focus{
+ border-color:#c18c9e;box-shadow:0 0 0 3px rgba(183,127,145,.13)
+}
+html[data-theme="dustyrose"] button{
+ border-color:#eadde1;background:#f8eff2;color:#6b5360
+}
+html[data-theme="dustyrose"] button:hover{
+ background:#f1e2e7;border-color:#dfc5ce
+}
+html[data-theme="dustyrose"] button.primary,
+html[data-theme="dustyrose"] .dash-primary{
+ background:#b77f91;border-color:#b77f91;color:#fff
+}
+html[data-theme="dustyrose"] button.primary:hover,
+html[data-theme="dustyrose"] .dash-primary:hover{
+ background:#9e687b;border-color:#9e687b
+}
+html[data-theme="dustyrose"] button.danger{
+ color:#a65d64;background:#fff4f3;border-color:#f0d9d9
+}
+html[data-theme="dustyrose"] .card{
+ background:#fffdfd;border-color:#eee1e5;
+ box-shadow:0 7px 24px rgba(107,76,88,.055)
+}
+html[data-theme="dustyrose"] .tablewrap{border-color:#eee1e5}
+html[data-theme="dustyrose"] table{background:#fffdfd}
+html[data-theme="dustyrose"] th{color:#8b747e;background:#f8f0f2}
+html[data-theme="dustyrose"] th,
+html[data-theme="dustyrose"] td{border-bottom-color:#f1e8eb}
+html[data-theme="dustyrose"] tbody tr:hover{background:#fcf5f7}
+html[data-theme="dustyrose"] .wordde{color:#71515f}
+html[data-theme="dustyrose"] .player{
+ background:linear-gradient(180deg,#fcf5f7,#f8edf1);
+ border-color:#efdee4
+}
+html[data-theme="dustyrose"] .word{color:#805c6b}
+html[data-theme="dustyrose"] .dash-secondary{
+ background:#f7ecef;color:#865f70;border-color:#ead8df
+}
+html[data-theme="dustyrose"] .stat-tile{
+ border-color:#eee1e5;background:#fffdfd
+}
+html[data-theme="dustyrose"] .stat-number{color:#986c7d}
+html[data-theme="dustyrose"] .stat-label{color:#917f87}
+html[data-theme="dustyrose"] .dashboard{
+ background:linear-gradient(145deg,#fffdfd 0%,#fbf3f5 100%);
+ border-color:#eadde1
+}
+html[data-theme="dustyrose"] .theme-control{color:#fff3f5}
+html[data-theme="dustyrose"] .theme-control select{
+ border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.16);color:#fff
+}
+html[data-theme="dustyrose"] .theme-control select option{
+ color:#51434a;background:#fff
+}
+
+
+/* Five calm palettes for comfortable long study sessions */
+html[data-theme="sage"]{
+ --ink:#46534a;--muted:#829087;--line:#e2e9e2;--teal:#829b83;--teal-dark:#69836b;
+ --teal-soft:#edf3ed;--surface:#fffefd;--shadow:0 7px 24px rgba(68,91,72,.055)
+}
+html[data-theme="sage"] body{background:linear-gradient(180deg,#eaf0e8 0,#f6f8f4 350px,#f6f8f4 100%)}
+html[data-theme="sage"] .hero{background:linear-gradient(120deg,#536b58,#829b83 68%,#a9bba5);box-shadow:0 14px 32px rgba(75,103,79,.12)}
+html[data-theme="sage"] .quick-nav{border-color:#dce6dc;background:rgba(253,255,252,.95)}
+html[data-theme="sage"] .quick-nav a{color:#536b58;background:#edf3ed}
+html[data-theme="sage"] .quick-nav a:hover{background:#dfe9df;border-color:#cbdacb}
+html[data-theme="sage"] button.primary,html[data-theme="sage"] .dash-primary{background:#829b83;border-color:#829b83;color:white}
+html[data-theme="sage"] button.primary:hover,html[data-theme="sage"] .dash-primary:hover{background:#69836b}
+html[data-theme="sage"] .dashboard{background:linear-gradient(145deg,#fffefd,#f2f6f0);border-color:#dfe8df}
+html[data-theme="sage"] .stat-number,html[data-theme="sage"] #reviewCard .word{color:#69836b}
+html[data-theme="sage"] #reviewCard{border-color:#dce7dc}
+html[data-theme="sage"] #reviewCard .player{background:linear-gradient(135deg,#edf3ed,#fbfdf9)}
+html[data-theme="sage"] .player{background:linear-gradient(180deg,#f7faf6,#eff5ee);border-color:#e1eae0}
+html[data-theme="sage"] .wordde{color:#536b58}
+html[data-theme="sage"] .theme-control select{color:#fff}
+html[data-theme="sage"] .theme-control select option{color:#46534a;background:#fff}
+
+html[data-theme="beige"]{
+ --ink:#51463d;--muted:#8c8075;--line:#ece3d9;--teal:#ad9276;--teal-dark:#92785e;
+ --teal-soft:#f5efe8;--surface:#fffefd;--shadow:0 7px 24px rgba(92,74,57,.055)
+}
+html[data-theme="beige"] body{background:linear-gradient(180deg,#f2eae0 0,#faf7f2 350px,#faf7f2 100%)}
+html[data-theme="beige"] .hero{background:linear-gradient(120deg,#705b4a,#a88b70 68%,#c5ad91);box-shadow:0 14px 32px rgba(105,82,61,.12)}
+html[data-theme="beige"] .quick-nav{border-color:#e9dfd3;background:rgba(255,253,249,.96)}
+html[data-theme="beige"] .quick-nav a{color:#715e4c;background:#f5eee5}
+html[data-theme="beige"] .quick-nav a:hover{background:#eee2d4;border-color:#e0d0be}
+html[data-theme="beige"] button.primary,html[data-theme="beige"] .dash-primary{background:#ad9276;border-color:#ad9276;color:white}
+html[data-theme="beige"] button.primary:hover,html[data-theme="beige"] .dash-primary:hover{background:#92785e}
+html[data-theme="beige"] .dashboard{background:linear-gradient(145deg,#fffefd,#f8f2e9);border-color:#e9dfd3}
+html[data-theme="beige"] .stat-number,html[data-theme="beige"] #reviewCard .word{color:#92785e}
+html[data-theme="beige"] #reviewCard{border-color:#e9dfd3}
+html[data-theme="beige"] #reviewCard .player,html[data-theme="beige"] .player{background:linear-gradient(135deg,#f5efe7,#fffaf4)}
+html[data-theme="beige"] .wordde{color:#715e4c}
+html[data-theme="beige"] .theme-control select option{color:#51463d;background:#fff}
+
+html[data-theme="softblue"]{
+ --ink:#435264;--muted:#8190a0;--line:#e1e8ef;--teal:#86a8c8;--teal-dark:#688eaf;
+ --teal-soft:#eef4fa;--surface:#fff;--shadow:0 7px 24px rgba(62,91,119,.055)
+}
+html[data-theme="softblue"] body{background:linear-gradient(180deg,#eaf1f8 0,#f6f8fb 350px,#f6f8fb 100%)}
+html[data-theme="softblue"] .hero{background:linear-gradient(120deg,#526d88,#83a5c5 68%,#a9c4dc);box-shadow:0 14px 32px rgba(67,101,135,.12)}
+html[data-theme="softblue"] .quick-nav{border-color:#dce6ef;background:rgba(252,254,255,.96)}
+html[data-theme="softblue"] .quick-nav a{color:#536f89;background:#edf4fa}
+html[data-theme="softblue"] .quick-nav a:hover{background:#dfeaf4;border-color:#cbdbe9}
+html[data-theme="softblue"] button.primary,html[data-theme="softblue"] .dash-primary{background:#86a8c8;border-color:#86a8c8;color:white}
+html[data-theme="softblue"] button.primary:hover,html[data-theme="softblue"] .dash-primary:hover{background:#688eaf}
+html[data-theme="softblue"] .dashboard{background:linear-gradient(145deg,#fff,#f1f6fb);border-color:#dce6ef}
+html[data-theme="softblue"] .stat-number,html[data-theme="softblue"] #reviewCard .word{color:#688eaf}
+html[data-theme="softblue"] #reviewCard{border-color:#dce6ef}
+html[data-theme="softblue"] #reviewCard .player,html[data-theme="softblue"] .player{background:linear-gradient(135deg,#edf4fa,#fbfdff)}
+html[data-theme="softblue"] .wordde{color:#536f89}
+html[data-theme="softblue"] .theme-control select option{color:#435264;background:#fff}
+
+html[data-theme="nordic"]{
+ --ink:#4c5354;--muted:#858d8e;--line:#e5e8e7;--teal:#899b96;--teal-dark:#6e817b;
+ --teal-soft:#f0f3f1;--surface:#fff;--shadow:0 7px 24px rgba(65,76,73,.045)
+}
+html[data-theme="nordic"] body{background:linear-gradient(180deg,#eef0ee 0,#f7f8f6 350px,#f7f8f6 100%)}
+html[data-theme="nordic"] .hero{background:linear-gradient(120deg,#535f5d,#899b96 68%,#b2bfba);box-shadow:0 14px 32px rgba(68,83,78,.10)}
+html[data-theme="nordic"] .quick-nav{border-color:#e1e5e2;background:rgba(255,255,255,.96)}
+html[data-theme="nordic"] .quick-nav a{color:#586461;background:#f0f3f1}
+html[data-theme="nordic"] .quick-nav a:hover{background:#e4eae6;border-color:#d4ddd8}
+html[data-theme="nordic"] button.primary,html[data-theme="nordic"] .dash-primary{background:#899b96;border-color:#899b96;color:white}
+html[data-theme="nordic"] button.primary:hover,html[data-theme="nordic"] .dash-primary:hover{background:#6e817b}
+html[data-theme="nordic"] .dashboard{background:linear-gradient(145deg,#fff,#f4f6f4);border-color:#e1e5e2}
+html[data-theme="nordic"] .stat-number,html[data-theme="nordic"] #reviewCard .word{color:#6e817b}
+html[data-theme="nordic"] #reviewCard{border-color:#e1e5e2}
+html[data-theme="nordic"] #reviewCard .player,html[data-theme="nordic"] .player{background:linear-gradient(135deg,#f0f3f1,#fff)}
+html[data-theme="nordic"] .wordde{color:#586461}
+html[data-theme="nordic"] .theme-control select option{color:#4c5354;background:#fff}
+
+/* Shared soft controls for all five palettes */
+html[data-theme="sage"] textarea,html[data-theme="sage"] input[type=text],html[data-theme="sage"] select,
+html[data-theme="beige"] textarea,html[data-theme="beige"] input[type=text],html[data-theme="beige"] select,
+html[data-theme="softblue"] textarea,html[data-theme="softblue"] input[type=text],html[data-theme="softblue"] select,
+html[data-theme="nordic"] textarea,html[data-theme="nordic"] input[type=text],html[data-theme="nordic"] select{
+ background:#fffefd;border-color:var(--line);color:var(--ink)
+}
+html[data-theme="sage"] button,html[data-theme="beige"] button,html[data-theme="softblue"] button,html[data-theme="nordic"] button{
+ background:var(--teal-soft);border-color:var(--line);color:var(--ink)
+}
+html[data-theme="sage"] button.primary,html[data-theme="beige"] button.primary,html[data-theme="softblue"] button.primary,html[data-theme="nordic"] button.primary{color:#fff}
+
+
+/* Компактний перемикач теми, узгоджений із дизайном шапки */
+.hero-tools{gap:12px}
+.theme-control{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 7px 5px 11px;border:1px solid rgba(255,255,255,.20);
+  border-radius:999px;background:rgba(255,255,255,.10);
+  color:rgba(255,255,255,.92);font-size:12px;font-weight:700;
+  white-space:nowrap;backdrop-filter:blur(8px)
+}
+.theme-caption{letter-spacing:.1px}
+.theme-control select{
+  appearance:none;-webkit-appearance:none;display:inline-block;
+  width:148px;min-width:148px;max-width:148px;margin:0;
+  min-height:31px;padding:6px 29px 6px 11px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.30);
+  background-color:rgba(255,255,255,.18);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m2 4 4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+  color:#fff;font:600 12px Inter,"Segoe UI",Arial,sans-serif;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08)
+}
+.theme-control select:hover{background-color:rgba(255,255,255,.25);border-color:rgba(255,255,255,.48)}
+.theme-control select:focus{outline:2px solid rgba(255,255,255,.42);outline-offset:2px;box-shadow:none}
+.theme-control select option{color:#34433b;background:#fff;font-weight:500}
+html[data-theme="dustyrose"] .theme-control{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+html[data-theme="dustyrose"] .theme-control select{background-color:rgba(255,255,255,.18);color:#fff}
+@media(max-width:650px){
+ .hero-tools{gap:7px}
+ .theme-control{padding:4px 6px 4px 9px;gap:6px}
+ .theme-control select{width:132px;min-width:132px;max-width:132px}
+}
+
+.art{font-weight:800}.art-der{color:#2f6db5}.art-die{color:#c2415a}.art-das{color:#2e8b57}
+</style></head><body><div class="wrap">
+<header class="hero" id="home">
+  <div class="hero-top"><span class="eyebrow">DEUTSCH LERNEN · HÖREN · WIEDERHOLEN</span><div class="hero-tools"><label class="theme-control"><span class="theme-caption">🎨 Тема</span><select id="themeSelect" aria-label="Вибрати оформлення"><option value="sage">Шавлієвий 🌿</option><option value="beige">Бежевий 🤎</option><option value="softblue">Блакитний 🩵</option><option value="dustyrose">Пудровий 🌸</option><option value="nordic">Скандинавський ◻️</option></select></label><span class="version">VERSION 18.0</span></div></div>
+  <h1><span class="flag">🇩🇪</span> Deutsch Hören</h1>
+  <p class="hero-copy">Твій простір для німецької мови — слухай, вивчай нові слова та впевнено рухайся від A1 до B1.</p>
+
+</header>
+  <nav class="quick-nav" aria-label="Швидка навігація">
+    <a href="#home">Головна</a><a href="#topics">Теми</a><a href="#mywords">Мій словник</a><a href="#sentences">Речення</a><a href="#reviewCard">Повторення</a><a href="#audio">Аудіо</a>
+  </nav>
+
+<section class="card" id="topics">
+<h2>🗂️ Готові тематичні словники</h2>
+<div class="grid">
+<label>Вибери тему<select id="category" style="display:block;width:100%;margin-top:7px"><option value="alltag">Повсякденне життя</option><option value="arbeit">Робота</option><option value="lkw">Завантаження та розвантаження LKW</option><option value="einkauf">Магазин і покупки</option><option value="arzt">Лікар</option><option value="verkehr">Транспорт</option><option value="a1">Рівень A1 · основи</option><option value="a2">Рівень A2 · щоденні ситуації</option><option value="b1">Рівень B1 · спілкування</option>
+<option value="a1_familie">A1 · Сім’я та знайомство</option><option value="a1_essen">A1 · Їжа та кафе</option><option value="a1_wohnen">A1 · Дім і побут</option>
+<option value="a2_reise">A2 · Подорожі та готель</option><option value="a2_wohnung">A2 · Квартира й оренда</option><option value="a2_gesundheit">A2 · Здоров’я</option>
+<option value="b1_arbeit">B1 · Робота та співбесіда</option><option value="b1_arzt">B1 · У лікаря та в лікарні</option><option value="b1_einkauf">B1 · Покупки й скарги</option><option value="b1_amt">B1 · У державних установах</option></select></label>
+<div class="small" id="categoryInfo" style="align-self:end">Готові базові слова з українським перекладом.</div>
+</div>
+<div class="actions" style="margin-top:10px"><button id="deleteCustomCategory" class="danger" disabled title="Доступно лише для власних категорій">🗑️ Видалити мою категорію</button><span class="small" id="categoryDeleteHint">Видаляти можна лише категорії, які ти створив самостійно.</span></div>
+<div class="actions"><button id="selectTopic">Вибрати всі слова теми</button><button id="topicToDict" class="primary">Додати вибрані до мого словника</button><button id="topicToQueue">Додати вибрані до аудіосписку</button></div>
+<div class="tablewrap"><table><thead><tr><th></th><th>Німецькою</th><th>Українською</th></tr></thead><tbody id="topicRows"></tbody></table></div>
+<div class="status" id="topicStatus" aria-live="polite">Вибери потрібні слова з теми.</div>
+</section>
+
+<section class="card">
+<h2>➕ Додати власні слова</h2>
+<label>Напрямок перекладу
+<select id="wordDirection">
+<option value="de-uk">🇩🇪 Німецька → українська</option>
+<option value="uk-de">🇺🇦 Українська → німецька</option>
+</select></label>
+<label id="newWordsLabel" style="display:block;margin-top:12px">Введи німецькі слова — по одному на рядок
+<textarea id="newWords" placeholder="Wasser&#10;Arbeit&#10;Haus"></textarea></label>
+<p class="small" style="margin:8px 0 0">Можна додавати кілька слів одразу. Перекладені слова потраплять до особистого словника й аудіоплеєра.</p>
+<div class="actions"><button id="addTranslate" class="primary">Перекласти й додати до словника</button><button id="example">Приклад</button></div>
+<div id="addStatus" class="status" aria-live="polite">Слова збережуться в особистому словнику та будуть доступні в аудіоплеєрі.</div>
+</section>
+
+
+<section class="card">
+<h2>🗃️ Створити власну категорію</h2>
+<p class="small">Наприклад: «На будівництві», «У школі», «Оренда житла», «Співбесіда». Додавай по одному запису на рядок. Можна написати лише німецьке слово або вказати переклад після вертикальної риски: <b>der Schlüssel | ключ</b>.</p>
+<label>Назва нової категорії<input id="customCategoryName" type="text" placeholder="Наприклад: У банку"></label>
+<label style="display:block;margin-top:12px">Слова та фрази<textarea id="customCategoryWords" placeholder="das Konto | рахунок&#10;Geld abheben | знімати гроші&#10;die Überweisung"></textarea></label>
+<div class="actions"><button id="createCategory" class="primary">Створити категорію та додати слова</button></div>
+<div class="status" id="customCategoryStatus" aria-live="polite">У власних категоріях можна редагувати та видаляти окремі записи прямо в таблиці. Дані входять до резервної копії.</div>
+</section>
+
+<section class="card">
+<h2>💾 Резервна копія словника</h2>
+<p class="small">Збережи свої слова у файл, щоб не втратити їх. Файл JSON можна буде імпортувати назад на цьому або іншому комп’ютері.</p>
+<div class="actions"><button id="exportData" class="primary">Експортувати дані</button><button id="importData">Імпортувати з файлу</button><input id="importFile" type="file" accept=".json,application/json" hidden></div>
+<div class="status" id="backupStatus" aria-live="polite">Експорт містить словник, аудіосписок і речення.</div>
+</section>
+
+<section class="card" id="sentences">
+<h2>💬 Мої речення</h2>
+<p class="small">Додавай німецькі речення — програма перекладе їх українською. Потім можна додати речення до того самого аудіосписку.</p>
+<label>Німецькі речення — по одному на рядок<textarea id="newSentences" placeholder="Ich lerne Deutsch.&#10;Können Sie mir bitte helfen?"></textarea></label>
+<div class="actions"><button id="addSentences" class="primary">Перекласти й зберегти речення</button></div>
+<div class="status" id="sentenceStatus" aria-live="polite">Речення зберігаються окремо від словника.</div>
+<input id="sentenceSearch" type="text" placeholder="Пошук речень…" aria-label="Пошук речень">
+<div class="actions"><button id="sentencesToQueue">Додати вибрані речення до аудіосписку</button><button id="deleteSentences" class="danger">Видалити вибрані</button></div>
+<div class="tablewrap"><table><thead><tr><th></th><th>Німецькою</th><th>Українською</th></tr></thead><tbody id="sentenceRows"></tbody></table></div>
+</section>
+
+<section class="card" id="reviewCard">
+<h2>🧠 Розумне повторення слів</h2>
+<p class="small">Програма планує повторення: складні слова показує частіше, а знайомі — через довші проміжки часу.</p>
+<div class="grid">
+<div><div class="small" id="reviewDueCount">Слова до повторення: 0</div><div class="small" id="reviewTotal">Усього карток: 0</div></div>
+<div class="actions" style="align-self:center;margin:0"><button id="startReview" class="primary">Повторити слова за розкладом</button><button id="startUnlimited">🔁 Тренувати без обмежень</button><button id="stopUnlimited" style="display:none">Завершити вільне тренування</button><button id="reviewAudio">Прослухати слово</button></div>
+</div>
+<div class="player" style="margin-top:15px">
+<div class="small" id="reviewProgress">Натисни «Почати повторення»</div>
+<div class="word" id="reviewDe">🇩🇪 Готовий?</div>
+<div class="translation" id="reviewUk" style="display:none">Український переклад</div>
+<div class="actions" style="justify-content:center"><button id="showReviewAnswer">Показати переклад</button></div>
+<div id="reviewRatings" class="actions" style="justify-content:center;display:none">
+<button data-rating="again" class="danger">Не пам’ятаю</button><button data-rating="hard">Важко</button><button data-rating="good" class="primary">Добре</button><button data-rating="easy">Легко</button>
+</div>
+<div class="status" id="reviewStatus" aria-live="polite">Оцінюй чесно: це допоможе підібрати інтервали повторення.</div>
+</div>
+</section>
+
+<section class="card" id="mywords">
+<h2>📖 Мій німецько-український словник</h2>
+<input id="search" type="text" placeholder="Пошук німецького або українського слова…">
+<div class="actions"><button id="selectVisible">Вибрати показані</button><button id="addSelected" class="primary">Додати вибрані до аудіосписку</button><button id="deleteSelected" class="danger">Видалити вибрані</button></div>
+<div class="small" id="dictCount">У словнику 0 слів</div>
+<div class="tablewrap"><table><thead><tr><th></th><th>Німецькою</th><th>Українською</th><th></th></tr></thead><tbody id="dictRows"></tbody></table></div>
+</section>
+
+<section class="card" id="audio">
+<h2>🎧 Список для прослуховування</h2><p class="small">Список для аудіо можна змінювати, не видаляючи слова з основного словника.</p>
+<div class="tablewrap"><table><thead><tr><th>Німецькою</th><th>Українською</th><th></th></tr></thead><tbody id="queueRows"></tbody></table></div>
+<div class="actions"><button id="clearQueue">Очистити аудіосписок</button><button id="play" class="primary">▶ Відтворити</button></div>
+<div class="player"><div class="small" id="position">0 / 0</div><div class="word" id="deNow">Вибери слова</div><div class="translation" id="ukNow">зі словника або тематичного розділу</div>
+<div class="actions" style="justify-content:center"><button id="prev">← Назад</button><button id="next">Далі →</button></div>
+<div class="options">
+<label>Швидкість озвучення:
+<select id="speed">
+<option value="0.5">0,5× — повільно</option>
+<option value="0.75">0,75× — трохи повільніше</option>
+<option value="1" selected>1× — звичайна</option>
+<option value="1.25">1,25× — швидше</option>
+<option value="1.5">1,5× — швидко</option>
+<option value="2">2× — дуже швидко</option>
+</select>
+</label>
+<label>Повторити кожну пару: <select id="repeat"><option value="1">1 раз</option><option value="2" selected>2 рази</option><option value="3">3 рази</option></select></label>
+<label>Пауза між повторами: <select id="repeatGap"><option value="0.5">0,5 сек.</option><option value="1" selected>1 сек.</option><option value="2">2 сек.</option><option value="3">3 сек.</option></select></label>
+<label>Пауза перед наступним словом: <select id="gap"><option value="1">1 сек.</option><option value="2" selected>2 сек.</option><option value="4">4 сек.</option><option value="6">6 сек.</option></select></label>
+</div><div class="options"><label><input id="loop" type="checkbox" checked> Повторювати список по колу</label></div>
+<div class="status" id="playStatus" aria-live="polite">Готово до прослуховування.</div></div>
+</section>
+<p class="small">Словник, речення й аудіосписок зберігаються локально в цьому браузері. Радимо час від часу експортувати резервну копію. Для перекладу власних слів та онлайн-озвучення потрібен інтернет. Готові теми охоплюють популярні ситуації A1–B1. Можна створювати власні категорії та поповнювати їх у будь-який час.</p>
+</div>
+<script>
+(()=> {
+const $=id=>document.getElementById(id),KEY='deutsch-hoeren-v3',BKEY='deutsch-hoeren-lastbackup';
+function setDe(el,text){el.textContent='';const m=/^(der|die|das)(\s+)(.+)$/i.exec(String(text));if(!m){el.textContent=text;return}const a=document.createElement('span');a.className='art art-'+m[1].toLowerCase();a.textContent=m[1];el.appendChild(a);el.appendChild(document.createTextNode(m[2]+m[3]))}
+const themeKey='deutsch-hoeren-theme-v15';
+function applyTheme(name){
+ const allowed=['sage','beige','softblue','dustyrose','nordic','classic','winter','forest','sunset'];
+ const theme=allowed.includes(name)?name:'classic';
+ document.documentElement.dataset.theme=theme;
+ const picker=$('themeSelect');if(picker)picker.value=theme;
+ try{localStorage.setItem(themeKey,theme)}catch(e){}
+}
+try{applyTheme(localStorage.getItem(themeKey)||'dustyrose')}catch(e){applyTheme('dustyrose')}
+$('themeSelect').addEventListener('change',e=>applyTheme(e.target.value));
+const topics={ lkw:{title:'Завантаження та розвантаження LKW',words:[
+['der LKW (Lastkraftwagen)','Вантажівка'],
+['der Fahrer','Водій'],
+['die Fahrerin','Водійка'],
+['der LKW-Fahrer','Водій вантажівки'],
+['der Anhänger','Причіп'],
+['der Auflieger','Напівпричіп'],
+['die Ladefläche','Вантажна платформа / кузов'],
+['der Laderaum','Вантажний відсік'],
+['die Ladung','Вантаж'],
+['das Ladegut','Вантаж'],
+['das Paket','Пакунок'],
+['der Karton','Картонна коробка'],
+['die Kiste','Ящик'],
+['die Palette','Палета'],
+['die Europalette','Європалета'],
+['die Sackkarre','Візок для перевезення'],
+['der Hubwagen','Рокла / гідравлічний візок'],
+['der Gabelstapler','Вилковий навантажувач'],
+['die Ameise','Електричний візок (рокла)'],
+['die Laderampe','Навантажувальна рампа'],
+['das Lager','Склад'],
+['das Lagerhaus','Складське приміщення'],
+['das Rolltor','Ролетні ворота'],
+['die Rampe','Рампа'],
+['die Ladebordwand','Гідроборт'],
+['der Aufzug','Підйомник / ліфт'],
+['der Lieferschein','Накладна на доставку'],
+['der Frachtbrief','Транспортна накладна'],
+['die Lieferung','Доставка'],
+['die Bestellung','Замовлення'],
+['der Empfänger','Одержувач'],
+['der Absender','Відправник'],
+['die Waren','Товари'],
+['das Gewicht','Вага'],
+['das Stück','Штука'],
+['die Menge','Кількість'],
+['die Zurrgurte','Стяжні ремені'],
+['der Spanngurt','Стяжний ремінь'],
+['die Ladungssicherung','Закріплення вантажу'],
+['die Warnweste','Сигнальний жилет'],
+['die Sicherheitsschuhe','Захисне взуття'],
+['die Handschuhe','Рукавиці'],
+['der Schutzhelm','Захисна каска'],
+['laden','Завантажувати'],
+['entladen','Розвантажувати'],
+['beladen','Завантажувати (транспорт)'],
+['ausladen','Вивантажувати'],
+['abladen','Знімати / вивантажувати вантаж'],
+['einladen','Завантажувати всередину'],
+['tragen','Нести'],
+['heben','Підіймати'],
+['senken','Опускати'],
+['schieben','Штовхати'],
+['ziehen','Тягнути'],
+['stapeln','Складати один на один'],
+['sortieren','Сортувати'],
+['kontrollieren','Перевіряти'],
+['unterschreiben','Підписувати'],
+['festmachen','Закріплювати'],
+['sichern','Фіксувати / закріплювати'],
+['vorsichtig','Обережно'],
+['schwer','Важкий'],
+['zerbrechlich','Крихкий'],
+['voll','Повний'],
+['leer','Порожній'],
+['oben','Зверху'],
+['unten','Знизу'],
+['links','Ліворуч'],
+['rechts','Праворуч'],
+['Der LKW muss entladen werden.','Вантажівку потрібно розвантажити.'],
+['Wo soll ich die Paletten abstellen?','Куди мені поставити палети?'],
+['Wie viele Paletten sind es?','Скільки тут палет?'],
+['Bitte langsam fahren.','Будь ласка, їдьте повільно.'],
+['Vorsicht, das ist schwer!','Обережно, це важке!'],
+['Kannst du mir helfen?','Можеш мені допомогти?'],
+['Wo ist der Hubwagen?','Де рокла?'],
+['Die Ware ist beschädigt.','Товар пошкоджений.'],
+['Diese Palette ist zu schwer.','Ця палета занадто важка.'],
+['Bitte die Ladung sichern.','Будь ласка, закріпіть вантаж.'],
+['Wo muss ich unterschreiben?','Де мені потрібно підписати?'],
+['Die Lieferung ist vollständig.','Доставка повна / усе на місці.'],
+['Es fehlt eine Palette.','Однієї палети не вистачає.'],
+['Ich bin mit dem Entladen fertig.','Я закінчив розвантаження.'],
+['Was soll zuerst ausgeladen werden?','Що потрібно вивантажити спочатку?'],
+['Wohin kommt diese Ware?','Куди поставити цей товар?']
+]},
+ alltag:{title:'Повсякденне життя',words:[['Guten Morgen','Доброго ранку'],['Guten Tag','Добрий день'],['Guten Abend','Добрий вечір'],['Danke','Дякую'],['Bitte','Будь ласка'],['Entschuldigung','Вибачте'],['Ja','Так'],['Nein','Ні'],['Heute','Сьогодні'],['Morgen','Завтра'],['Gestern','Учора'],['Zeit','Час'],['Wasser','Вода'],['Essen','Їжа'],['Trinken','Пити'],['Schlafen','Спати'],['Lernen','Вчитися'],['Sprechen','Розмовляти'],['Verstehen','Розуміти'],['Hilfe','Допомога']]},
+ arbeit:{title:'Робота',words:[['die Arbeit','Робота'],['der Beruf','Професія'],['der Chef','Начальник'],['die Kollegin','Колега'],['der Kollege','Колега'],['die Pause','Перерва'],['das Büro','Офіс'],['die Firma','Фірма'],['der Vertrag','Договір'],['das Gehalt','Зарплата'],['arbeiten','Працювати'],['anfangen','Починати'],['aufhören','Закінчувати'],['die Schicht','Зміна'],['der Urlaub','Відпустка'],['krank','Хворий'],['pünktlich','Вчасно'],['die Besprechung','Нарада'],['die Aufgabe','Завдання'],['Feierabend','Кінець робочого дня']]},
+ einkauf:{title:'Магазин і покупки',words:[['der Supermarkt','Супермаркет'],['das Geschäft','Магазин'],['der Preis','Ціна'],['das Geld','Гроші'],['die Kasse','Каса'],['die Rechnung','Рахунок'],['die Tasche','Сумка'],['das Brot','Хліб'],['die Milch','Молоко'],['das Wasser','Вода'],['das Fleisch','М’ясо'],['das Gemüse','Овочі'],['das Obst','Фрукти'],['die Kartoffel','Картопля'],['der Käse','Сир'],['teuer','Дорогий'],['billig','Дешевий'],['bezahlen','Платити'],['kaufen','Купувати'],['Wie viel kostet das?','Скільки це коштує?']]},
+ arzt:{title:'Лікар',words:[['der Arzt','Лікар'],['die Ärztin','Лікарка'],['der Termin','Запис / прийом'],['die Apotheke','Аптека'],['das Rezept','Рецепт'],['die Schmerzen','Біль'],['der Kopf','Голова'],['der Bauch','Живіт'],['der Rücken','Спина'],['das Fieber','Температура / жар'],['der Husten','Кашель'],['die Erkältung','Застуда'],['die Tablette','Таблетка'],['die Untersuchung','Обстеження'],['Ich bin krank.','Я хворий / хвора.'],['Es tut weh.','Болить.'],['Mir ist schlecht.','Мені погано.'],['Ich brauche Hilfe.','Мені потрібна допомога.'],['die Versicherung','Страхування'],['das Krankenhaus','Лікарня']]},
+ verkehr:{title:'Транспорт',words:[['der Bahnhof','Вокзал'],['die Haltestelle','Зупинка'],['der Zug','Поїзд'],['der Bus','Автобус'],['die Straßenbahn','Трамвай'],['das Auto','Автомобіль'],['das Ticket','Квиток'],['die Fahrkarte','Проїзний квиток'],['die Verspätung','Запізнення'],['die Abfahrt','Відправлення'],['die Ankunft','Прибуття'],['der Flughafen','Аеропорт'],['die Straße','Вулиця / дорога'],['links','Ліворуч'],['rechts','Праворуч'],['geradeaus','Прямо'],['Wann fährt der Zug?','Коли відправляється поїзд?'],['Wo ist der Bahnhof?','Де вокзал?'],['umsteigen','Пересідати'],['fahren','Їхати']]},
+ a1:{title:'A1 · Основи',words:[['Ich heiße …','Мене звати …'],['Wie geht es Ihnen?','Як у Вас справи?'],['Mir geht es gut.','У мене все добре.'],['Ich komme aus der Ukraine.','Я з України.'],['Ich wohne in Österreich.','Я живу в Австрії.'],['Ich spreche Ukrainisch.','Я розмовляю українською.'],['Ich lerne Deutsch.','Я вивчаю німецьку.'],['Wie spät ist es?','Котра година?'],['Es ist halb acht.','Пів на восьму.'],['Was machen Sie beruflich?','Ким Ви працюєте?'],['Ich habe eine Frage.','У мене є запитання.'],['Können Sie das bitte wiederholen?','Можете, будь ласка, повторити?'],['Ich verstehe nicht.','Я не розумію.'],['Langsam, bitte.','Повільніше, будь ласка.'],['Woher kommen Sie?','Звідки Ви?'],['Wie heißt das auf Deutsch?','Як це називається німецькою?'],['Ich hätte gern einen Kaffee.','Я хотів би каву.'],['Die Rechnung, bitte.','Рахунок, будь ласка.'],['Heute habe ich Zeit.','Сьогодні я маю час.'],['Bis morgen!','До завтра!']]},
+ a2:{title:'A2 · Щоденні ситуації',words:[['Ich interessiere mich für Musik.','Я цікавлюся музикою.'],['Könnten Sie mir helfen?','Чи могли б Ви мені допомогти?'],['Ich suche eine Wohnung.','Я шукаю квартиру.'],['Die Miete ist zu teuer.','Оренда занадто дорога.'],['Ich möchte einen Termin vereinbaren.','Я хотів би домовитися про зустріч.'],['Ich habe meinen Schlüssel verloren.','Я загубив свій ключ.'],['Wie komme ich zum Zentrum?','Як дістатися до центру?'],['Ich muss heute länger arbeiten.','Сьогодні мені потрібно працювати довше.'],['Am Wochenende besuche ich Freunde.','На вихідних я відвідую друзів.'],['Das hängt vom Wetter ab.','Це залежить від погоди.'],['Ich bin damit einverstanden.','Я з цим згоден.'],['Leider habe ich keine Zeit.','На жаль, я не маю часу.'],['Können wir später telefonieren?','Можемо поговорити телефоном пізніше?'],['Ich habe mich verspätet.','Я запізнився.'],['Was würden Sie empfehlen?','Що б Ви порадили?'],['Ich fühle mich heute besser.','Сьогодні я почуваюся краще.'],['Das gefällt mir sehr.','Мені це дуже подобається.'],['Ich muss darüber nachdenken.','Мені потрібно над цим подумати.'],['Vielen Dank für Ihre Nachricht.','Щиро дякую за Ваше повідомлення.'],['Ich freue mich auf das Wochenende.','Я з нетерпінням чекаю вихідних.']]},
+ b1:{title:'B1 · Спілкування',words:[['Meiner Meinung nach …','На мою думку …'],['Ich bin der Ansicht, dass …','Я дотримуюся думки, що …'],['Einerseits … andererseits …','З одного боку … з іншого боку …'],['Das kommt darauf an.','Це залежить від обставин.'],['Ich würde vorschlagen, dass …','Я б запропонував, щоб …'],['Könnten Sie mir genauer erklären, …?','Чи могли б Ви точніше пояснити …?'],['Ich habe die Erfahrung gemacht, dass …','Я мав досвід, що …'],['Es ist mir besonders wichtig, …','Для мене особливо важливо …'],['Im Vergleich dazu …','У порівнянні з цим …'],['Aus diesem Grund …','З цієї причини …'],['Obwohl es schwierig ist, …','Хоча це складно, …'],['Ich bin damit nicht ganz einverstanden.','Я не зовсім із цим згоден.'],['Das lässt sich leider nicht vermeiden.','На жаль, цього не можна уникнути.'],['Ich würde gerne einen Vorschlag machen.','Я хотів би зробити пропозицію.'],['Könnten wir eine Lösung finden?','Чи могли б ми знайти рішення?'],['Ich habe mich dafür entschieden.','Я вирішив зробити саме так.'],['Es wäre sinnvoll, …','Було б доцільно …'],['Soweit ich weiß, …','Наскільки мені відомо, …'],['Ich bin davon überzeugt, dass …','Я переконаний, що …'],['Vielen Dank für Ihr Verständnis.','Дякую за Ваше розуміння.']]},
+ a1_familie:{title:'A1 · Сім’я та знайомство',words:[['die Familie','Сім’я'],['die Eltern','Батьки'],['die Mutter','Мати'],['der Vater','Батько'],['der Bruder','Брат'],['die Schwester','Сестра'],['das Kind','Дитина'],['der Freund','Друг'],['die Freundin','Подруга'],['ledig','Неодружений / незаміжня'],['verheiratet','Одружений / заміжня'],['Wie alt bist du?','Скільки тобі років?'],['Ich bin 30 Jahre alt.','Мені 30 років.'],['Hast du Geschwister?','У тебе є брати або сестри?'],['Wir wohnen zusammen.','Ми живемо разом.']]},
+ a1_essen:{title:'A1 · Їжа та кафе',words:[['das Frühstück','Сніданок'],['das Mittagessen','Обід'],['das Abendessen','Вечеря'],['der Kaffee','Кава'],['der Tee','Чай'],['das Wasser','Вода'],['das Brötchen','Булочка'],['die Speisekarte','Меню'],['die Suppe','Суп'],['der Salat','Салат'],['Ich möchte bestellen.','Я хотів би замовити.'],['Ohne Zucker, bitte.','Без цукру, будь ласка.'],['Zum Mitnehmen, bitte.','Із собою, будь ласка.'],['Was empfehlen Sie?','Що Ви порадите?'],['Das schmeckt sehr gut.','Це дуже смачно.']]},
+ a1_wohnen:{title:'A1 · Дім і побут',words:[['die Wohnung','Квартира'],['das Haus','Будинок'],['das Zimmer','Кімната'],['die Küche','Кухня'],['das Bad','Ванна кімната'],['das Schlafzimmer','Спальня'],['der Tisch','Стіл'],['der Stuhl','Стілець'],['das Bett','Ліжко'],['die Tür','Двері'],['das Fenster','Вікно'],['Ich bin zu Hause.','Я вдома.'],['Wo ist die Küche?','Де кухня?'],['Die Wohnung ist groß.','Квартира велика.'],['Ich brauche einen Schlüssel.','Мені потрібен ключ.']]},
+ a2_reise:{title:'A2 · Подорожі та готель',words:[['die Reservierung','Бронювання'],['das Einzelzimmer','Одномісний номер'],['das Doppelzimmer','Двомісний номер'],['die Übernachtung','Ночівля'],['die Rezeption','Рецепція'],['der Reisepass','Закордонний паспорт'],['das Gepäck','Багаж'],['der Koffer','Валіза'],['die Reiseversicherung','Страхування подорожі'],['Ich habe ein Zimmer reserviert.','Я забронював номер.'],['Wann ist das Frühstück?','Коли сніданок?'],['Kann ich später auschecken?','Чи можу я виїхати пізніше?'],['Der Zug hat Verspätung.','Поїзд затримується.'],['Wo kann ich umsteigen?','Де я можу пересісти?'],['Können Sie mir den Weg zeigen?','Можете показати мені дорогу?']]},
+ a2_wohnung:{title:'A2 · Квартира й оренда',words:[['die Miete','Орендна плата'],['die Kaution','Застава'],['der Mietvertrag','Договір оренди'],['die Nebenkosten','Комунальні та додаткові витрати'],['der Vermieter','Орендодавець'],['die Vermieterin','Орендодавиця'],['die Heizung','Опалення'],['die Waschmaschine','Пральна машина'],['die Besichtigung','Перегляд житла'],['Ist die Wohnung noch frei?','Квартира ще вільна?'],['Wie hoch ist die Kaution?','Яка сума застави?'],['Sind Haustiere erlaubt?','Чи дозволені домашні тварини?'],['Die Heizung funktioniert nicht.','Опалення не працює.'],['Ich möchte den Vertrag kündigen.','Я хочу розірвати договір.'],['Wann kann ich einziehen?','Коли я можу заселитися?']]},
+ a2_gesundheit:{title:'A2 · Здоров’я',words:[['die Beschwerden','Скарги / симптоми'],['die Untersuchung','Обстеження'],['der Blutdruck','Артеріальний тиск'],['die Krankmeldung','Лікарняний лист'],['die Krankenversicherung','Медичне страхування'],['der Termin beim Arzt','Прийом у лікаря'],['Ich habe seit gestern Schmerzen.','У мене болить від учора.'],['Ich brauche einen Arzttermin.','Мені потрібен запис до лікаря.'],['Nehmen Sie Medikamente?','Ви приймаєте ліки?'],['Ich bin gegen … allergisch.','У мене алергія на …'],['Wie lange soll ich das nehmen?','Як довго мені це приймати?'],['Muss ich im Bett bleiben?','Мені потрібно залишатися в ліжку?'],['Mir ist schwindelig.','У мене паморочиться голова.'],['Ich habe die Versicherungskarte dabei.','У мене із собою страхова картка.'],['Wo befindet sich die Notaufnahme?','Де знаходиться відділення невідкладної допомоги?']]},
+ b1_arbeit:{title:'B1 · Робота та співбесіда',words:[['die Bewerbung','Заява на роботу'],['der Lebenslauf','Резюме'],['das Vorstellungsgespräch','Співбесіда'],['die Berufserfahrung','Досвід роботи'],['die Kenntnisse','Знання / навички'],['die Verantwortung','Відповідальність'],['die Arbeitsbedingungen','Умови праці'],['die Überstunden','Понаднормові години'],['die Kündigungsfrist','Строк попередження про звільнення'],['Ich bewerbe mich um diese Stelle.','Я подаю заявку на цю посаду.'],['Welche Aufgaben hätte ich?','Які в мене будуть обов’язки?'],['Ich arbeite sowohl selbstständig als auch im Team.','Я працюю як самостійно, так і в команді.'],['Wann könnte ich anfangen?','Коли я міг би почати?'],['Ich habe Erfahrung in diesem Bereich.','Я маю досвід у цій сфері.'],['Könnten Sie mir eine Rückmeldung geben?','Чи могли б Ви надати мені відповідь?']]},
+ b1_arzt:{title:'B1 · У лікаря та в лікарні',words:[['die Überweisung','Направлення'],['die Aufnahme','Госпіталізація / прийом'],['die Entlassung','Виписка з лікарні'],['die Nebenwirkungen','Побічні ефекти'],['die Behandlung','Лікування'],['die Blutuntersuchung','Аналіз крові'],['die Röntgenaufnahme','Рентгенівський знімок'],['die Beschwerden haben zugenommen.','Симптоми посилилися.'],['Seit wann bestehen die Beschwerden?','Як давно тривають симптоми?'],['Ich nehme regelmäßig Medikamente ein.','Я регулярно приймаю ліки.'],['Könnten Sie mir die Diagnose erklären?','Чи могли б Ви пояснити мені діагноз?'],['Gibt es alternative Behandlungsmöglichkeiten?','Чи є альтернативні методи лікування?'],['Ich möchte eine zweite Meinung einholen.','Я хотів би отримати другу думку.'],['Wann liegen die Ergebnisse vor?','Коли будуть результати?'],['Bitte informieren Sie meine Familie.','Будь ласка, повідомте мою родину.']]},
+ b1_einkauf:{title:'B1 · Покупки й скарги',words:[['der Kassenbon','Касовий чек'],['die Rückgabe','Повернення товару'],['der Umtausch','Обмін товару'],['die Garantie','Гарантія'],['der Mangel','Недолік / дефект'],['die Reklamation','Рекламація / скарга'],['die Erstattung','Відшкодування'],['Die Ware ist beschädigt angekommen.','Товар прибув пошкодженим.'],['Ich möchte den Artikel zurückgeben.','Я хочу повернути товар.'],['Könnten Sie mir den Betrag erstatten?','Чи могли б Ви повернути мені кошти?'],['Das entspricht nicht der Beschreibung.','Це не відповідає опису.'],['Wie lange gilt die Garantie?','Як довго діє гарантія?'],['Ich habe die Quittung leider verloren.','На жаль, я загубив чек.'],['Gibt es eine günstigere Alternative?','Чи є дешевша альтернатива?'],['Ich möchte mich beschweren.','Я хотів би поскаржитися.']]},
+ b1_amt:{title:'B1 · У державних установах',words:[['das Formular','Формуляр'],['der Antrag','Заява / клопотання'],['die Meldebestätigung','Підтвердження реєстрації місця проживання'],['der Aufenthaltstitel','Дозвіл на проживання'],['die Unterlagen','Документи'],['die Frist','Строк / термін'],['die Behörde','Державна установа'],['der Nachweis','Підтвердження / доказ'],['Einen Termin vereinbaren','Домовитися про прийом'],['Welche Unterlagen muss ich mitbringen?','Які документи мені потрібно принести?'],['Wo kann ich den Antrag einreichen?','Де я можу подати заяву?'],['Wie lange dauert die Bearbeitung?','Скільки триває розгляд?'],['Mir fehlt noch ein Dokument.','Мені ще бракує одного документа.'],['Könnten Sie mir das schriftlich bestätigen?','Чи могли б Ви письмово це підтвердити?'],['Ich möchte mich nach dem Stand erkundigen.','Я хотів би дізнатися про стан розгляду.']]}
+};
+let dictionary=[],queue=[],sentences=[],customTopics={},index=0,playing=false,generation=0,audio=null,audioController=null,timer=null,topicSelected=new Set(),reviewCard=null,reviewedCount=0,reviewUnlimited=false,reviewCursor=0;
+const playStatus=s=>$('playStatus').textContent=s;
+function save(){try{localStorage.setItem(KEY,JSON.stringify({dictionary,queue,sentences,customTopics,index,repeat:$('repeat').value,speed:$('speed').value,repeatGap:$('repeatGap').value,gap:$('gap').value,loop:$('loop').checked}))}catch(e){$('addStatus').textContent='Не вдалося зберегти дані у браузері.'}}
+function stop(){playing=false;generation++;clearTimeout(timer);if(audio){audio.pause();audio.currentTime=0;audio=null}if(audioController){audioController.abort();audioController=null}$('play').textContent='▶ Відтворити'}
+
+function ensureCardFields(e){
+ if(!Number.isFinite(e.intervalDays))e.intervalDays=0;
+ if(!Number.isFinite(e.repetitions))e.repetitions=0;
+ if(!Number.isFinite(e.ease))e.ease=2.5;
+ if(!Number.isFinite(e.dueAt))e.dueAt=0;
+ return e;
+}
+function reviewDue(){return dictionary.map(ensureCardFields).filter(e=>!e.dueAt||e.dueAt<=Date.now()).length}
+function updateDashboard(){
+ if(!$('dashWords'))return;
+ $('dashWords').textContent=dictionary.length;
+ $('dashDue').textContent=reviewDue();
+ $('dashSentences').textContent=sentences.length;
+ $('dashQueue').textContent=queue.length;
+}
+function renderReviewStats(){
+ $('reviewDueCount').textContent=`Слова до повторення: ${reviewDue()}`;
+ $('reviewTotal').textContent=`Усього карток: ${dictionary.length}`;
+ updateDashboard();
+}
+function chooseReviewCard(){
+ const all=dictionary.map((e,i)=>({...ensureCardFields(e),_i:i}));
+ const due=reviewUnlimited?all.slice(reviewCursor%Math.max(1,all.length),reviewCursor%Math.max(1,all.length)+1):all.filter(e=>!e.dueAt||e.dueAt<=Date.now()).sort((a,b)=>(a.dueAt||0)-(b.dueAt||0));
+ if(!due.length){reviewCard=null;$('reviewDe').textContent='🎉 Усе повторено!';$('reviewUk').style.display='none';$('reviewRatings').style.display='none';$('showReviewAnswer').style.display='none';$('reviewProgress').textContent='На цей момент немає слів, які потрібно повторити.';return}
+ reviewCard=due[0];setDe($('reviewDe'),reviewCard.de);$('reviewUk').textContent=reviewCard.uk;$('reviewUk').style.display='none';$('reviewRatings').style.display='none';$('showReviewAnswer').style.display='inline-block';
+ $('reviewProgress').textContent=reviewUnlimited?`Вільне тренування · картка ${reviewedCount+1} · можна повторювати без кінця`:`Картка ${reviewedCount+1} · у черзі ${due.length}`;
+ $('reviewStatus').textContent='Спробуй згадати переклад, перш ніж його відкрити.';
+}
+function rateReview(rating){
+ if(!reviewCard)return;
+ const e=dictionary[reviewCard._i];ensureCardFields(e);
+ const now=Date.now();
+  if(rating==='again'){e.ease=Math.max(1.3,e.ease-0.2);e.repetitions=0;e.intervalDays=0;e.dueAt=now+10*60*1000;}
+  else{
+   if(rating==='hard'){e.ease=Math.max(1.3,e.ease-0.15);e.intervalDays=Math.max(1,e.intervalDays*1.2)}
+   else if(rating==='good'){e.intervalDays=e.repetitions===0?1:e.repetitions===1?3:Math.max(1,e.intervalDays*e.ease)}
+   else{e.ease=Math.min(3.0,e.ease+0.15);e.intervalDays=e.repetitions===0?4:Math.max(2,e.intervalDays*e.ease*1.3)}
+   e.repetitions++;e.dueAt=now+e.intervalDays*86400000;
+  }
+ reviewedCount++;if(reviewUnlimited)reviewCursor=(reviewCursor+1)%Math.max(1,dictionary.length);save();renderDict();renderReviewStats();chooseReviewCard();
+ $('reviewStatus').textContent=rating==='again'?'Повернемося до цього слова приблизно через 10 хвилин.':`Наступне повторення приблизно через ${Math.round(e.intervalDays)} дн.`;
+}
+async function createCustomCategory(){
+ const title=$('customCategoryName').value.trim(),lines=$('customCategoryWords').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ if(!title){$('customCategoryStatus').textContent='Вкажи назву категорії.';return}
+ if(!lines.length){$('customCategoryStatus').textContent='Додай хоча б одне слово або фразу.';return}
+ const key='custom_'+Date.now();
+ const words=[];
+ $('createCategory').disabled=true;
+ for(let i=0;i<lines.length;i++){
+  const parts=lines[i].split('|');const de=parts[0].trim();let uk=parts.slice(1).join('|').trim();
+  if(!de)continue;
+  if(!uk){
+   $('customCategoryStatus').textContent=`Перекладаю ${i+1} з ${lines.length}: ${de}`;
+   try{const res=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(de)+'&langpair=de|uk');if(!res.ok)throw Error();const data=await res.json();uk=data?.responseData?.translatedText||'';if(!uk)throw Error();}
+   catch(err){$('customCategoryStatus').textContent=`Не вдалося перекласти «${de}». Додай переклад вручну після символу |.`;$('createCategory').disabled=false;return}
+  }
+  words.push([de,uk]);
+ }
+ if(!words.length){$('createCategory').disabled=false;return}
+ customTopics[key]={title,words};
+ const opt=document.createElement('option');opt.value=key;opt.textContent=title+' · моя категорія';$('category').appendChild(opt);$('category').value=key;
+ $('customCategoryName').value='';$('customCategoryWords').value='';$('createCategory').disabled=false;
+ save();renderTopic();$('customCategoryStatus').textContent=`Категорію «${title}» створено. У ній ${words.length} записів.`;
+}
+function updateDeleteCategoryButton(){
+ const key=$('category').value;
+ const isCustom=Object.prototype.hasOwnProperty.call(customTopics,key);
+ $('deleteCustomCategory').disabled=!isCustom;
+ $('deleteCustomCategory').title=isCustom?'Видалити вибрану власну категорію':'Готові категорії програми видаляти не можна';
+ $('categoryDeleteHint').textContent=isCustom?'Ця категорія створена тобою — її можна видалити.':'Готові категорії програми захищені від видалення.';
+}
+function deleteCustomCategory(){
+ const key=$('category').value;
+ const topic=customTopics[key];
+ if(!topic)return;
+ if(!confirm(`Видалити власну категорію «${topic.title}»? Слова, які ти вже додав до особистого словника або аудіосписку, залишаться там.`))return;
+ delete customTopics[key];
+ const option=$('category').querySelector(`option[value="${CSS.escape(key)}"]`);
+ if(option)option.remove();
+ $('category').value='alltag';
+ topicSelected.clear();
+ save();renderTopic();updateDeleteCategoryButton();
+ $('topicStatus').textContent=`Категорію «${topic.title}» видалено. Слова в особистому словнику та аудіосписку збережені.`;
+}
+function editDictionaryWord(i){
+ const item=dictionary[i];if(!item)return;
+ const de=prompt('Відредагуй німецьке слово або фразу:',item.de);if(de===null)return;
+ const uk=prompt('Відредагуй український переклад:',item.uk);if(uk===null)return;
+ if(!de.trim()||!uk.trim()){alert('Німецьке слово та переклад не можуть бути порожніми.');return}
+ const oldDe=item.de;item.de=de.trim();item.uk=uk.trim();
+ queue.forEach(q=>{if(q.de===oldDe){q.de=item.de;q.uk=item.uk}});
+ save();renderDict();renderQueue();renderReviewStats();
+}
+function editTopicWord(i){
+ const key=$('category').value,t=customTopics[key];if(!t||!t.words[i])return;
+ const w=t.words[i],de=prompt('Відредагуй німецьке слово або фразу:',w[0]);if(de===null)return;
+ const uk=prompt('Відредагуй український переклад:',w[1]);if(uk===null)return;
+ if(!de.trim()||!uk.trim()){alert('Німецьке слово та переклад не можуть бути порожніми.');return}
+ t.words[i]=[de.trim(),uk.trim()];save();renderTopic();
+}
+function deleteTopicWord(i){
+ const key=$('category').value,t=customTopics[key];if(!t||!t.words[i])return;
+ const w=t.words[i];if(!confirm(`Видалити «${w[0]}» із категорії «${t.title}»?`))return;
+ t.words.splice(i,1);save();renderTopic();
+}
+function renderTopic(){
+ const t=topics[$('category').value]||customTopics[$('category').value];
+ updateDeleteCategoryButton();if(!t){$('categoryInfo').textContent='Оберіть категорію.';return}$('categoryInfo').textContent=`Тема «${t.title}»: ${t.words.length} готових слів.`;
+ $('topicRows').innerHTML='';topicSelected.clear();
+ t.words.forEach((w,i)=>{const tr=document.createElement('tr');const custom=Object.prototype.hasOwnProperty.call(customTopics,$('category').value);tr.innerHTML='<td><input type="checkbox" class="topicPick" data-index="'+i+'"></td><td class="wordde"></td><td></td><td></td>';setDe(tr.children[1],w[0]);tr.children[2].textContent=w[1];if(custom){const actions=document.createElement('div');actions.className='actions';actions.style.margin='0';actions.innerHTML='<button class="editTopicWord" data-index="'+i+'">✏️</button><button class="danger deleteTopicWord" data-index="'+i+'">✕</button>';tr.children[3].appendChild(actions)}else{tr.children[3].textContent='—'}$('topicRows').appendChild(tr)});
+ $('topicStatus').textContent='Познач потрібні слова або вибери всю тему.';
+}
+function renderDict(){
+ const q=$('search').value.trim().toLocaleLowerCase(),shown=dictionary.map((e,i)=>({...e,i})).filter(e=>(e.de+' '+e.uk).toLocaleLowerCase().includes(q));
+ $('dictCount').textContent=`У словнику ${dictionary.length} слів · показано ${shown.length}`;$('dictRows').innerHTML='';
+ if(!shown.length){$('dictRows').innerHTML='<tr><td colspan="4" class="empty">Слів не знайдено.</td></tr>';return}
+ shown.forEach(e=>{const tr=document.createElement('tr');tr.innerHTML='<td><input type="checkbox" class="pick" data-index="'+e.i+'"></td><td class="wordde"></td><td></td><td><div class="actions" style="margin:0"><button class="editWord" data-index="'+e.i+'">✏️ Редагувати</button><button class="danger remove" data-index="'+e.i+'">Видалити</button></div></td>';setDe(tr.children[1],e.de);tr.children[2].textContent=e.uk;$('dictRows').appendChild(tr)});
+
+ updateDashboard();
+}
+function renderSentences(){
+ const q=$('sentenceSearch').value.trim().toLocaleLowerCase();
+ const shown=sentences.map((e,i)=>({...e,i})).filter(e=>(e.de+' '+e.uk).toLocaleLowerCase().includes(q));
+ $('sentenceRows').innerHTML='';
+ if(!shown.length){$('sentenceRows').innerHTML='<tr><td colspan="3" class="empty">Речень поки немає.</td></tr>';return}
+ shown.forEach(e=>{const tr=document.createElement('tr');tr.innerHTML='<td><input type="checkbox" class="sentencePick" data-index="'+e.i+'"></td><td class="wordde"></td><td></td>';setDe(tr.children[1],e.de);tr.children[2].textContent=e.uk;$('sentenceRows').appendChild(tr)});
+
+ updateDashboard();
+}
+async function addSentenceLines(){
+ const lines=$('newSentences').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+ if(!lines.length){$('sentenceStatus').textContent='Впиши хоча б одне речення.';return}
+ $('addSentences').disabled=true;let added=0;
+ for(let i=0;i<lines.length;i++){
+  const de=lines[i];if(sentences.some(e=>e.de.toLocaleLowerCase()===de.toLocaleLowerCase()))continue;
+  $('sentenceStatus').textContent=`Перекладаю речення ${i+1} з ${lines.length}…`;
+  try{const res=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(de)+'&langpair=de|uk');if(!res.ok)throw Error();const data=await res.json(),uk=data?.responseData?.translatedText;if(!uk)throw Error();sentences.push({de,uk});added++;save();renderSentences()}
+  catch(e){$('sentenceStatus').textContent=`Не вдалося перекласти: ${de}. Перевір інтернет.`}
+ }
+ $('addSentences').disabled=false;$('newSentences').value='';renderSentences();save();
+ $('sentenceStatus').textContent=`Готово. Додано ${added} речень.`;
+}
+function renderQueue(){
+ $('queueRows').innerHTML='';if(!queue.length)$('queueRows').innerHTML='<tr><td colspan="3" class="empty">Аудіосписок поки порожній.</td></tr>';
+ queue.forEach((e,i)=>{const tr=document.createElement('tr');tr.innerHTML='<td class="wordde"></td><td></td><td><button class="danger qremove" data-index="'+i+'">Прибрати</button></td>';setDe(tr.children[0],e.de);tr.children[1].textContent=e.uk;$('queueRows').appendChild(tr)});
+ const e=queue[index];$('deNow').textContent=e?.de||'Вибери слова';$('ukNow').textContent=e?.uk||'зі словника або тематичного розділу';$('position').textContent=queue.length?`${index+1} / ${queue.length}`:'0 / 0';save();updateDashboard();
+}
+function addQueue(items){items.forEach(e=>{if(!queue.some(q=>q.de.toLocaleLowerCase()===e.de.toLocaleLowerCase()))queue.push({...e})});index=0;renderQueue();playStatus(`В аудіосписку ${queue.length} слів.`)}
+async function translateWords(){
+ const lines=$('newWords').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+ const direction=$('wordDirection').value;
+ const from=direction==='uk-de'?'uk':'de',to=direction==='uk-de'?'de':'uk';
+ if(!lines.length){$('addStatus').textContent='Впиши хоча б одне слово.';return}
+ $('addTranslate').disabled=true;let added=0,skipped=0,failed=[];
+ for(let n=0;n<lines.length;n++){
+  const source=lines[n];
+  $('addStatus').textContent=`Перекладаю ${n+1} з ${lines.length}: ${source}`;
+  try{
+   const res=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(source)+'&langpair='+from+'|'+to);
+   if(!res.ok)throw Error('network');
+   const data=await res.json(),translated=(data?.responseData?.translatedText||'').trim();
+   if(!translated)throw Error('empty');
+   const de=direction==='uk-de'?translated:source,uk=direction==='uk-de'?source:translated;
+   const duplicate=dictionary.some(e=>e.de.toLocaleLowerCase()===de.toLocaleLowerCase()&&e.uk.toLocaleLowerCase()===uk.toLocaleLowerCase());
+   if(duplicate){skipped++;continue}
+   dictionary.push(ensureCardFields({de,uk}));added++;
+   renderDict();renderReviewStats();save();
+  }catch(e){failed.push(source)}
+ }
+ $('addTranslate').disabled=false;$('newWords').value='';
+ renderDict();renderReviewStats();save();
+ let message=`Готово! Додано: ${added}.`;
+ if(skipped)message+=` Уже були у словнику: ${skipped}.`;
+ if(failed.length)message+=` Не вдалося перекласти: ${failed.join(', ')}. Перевір інтернет.`;
+ $('addStatus').textContent=message;
+}
+function chosenTopic(){const t=topics[$('category').value]||customTopics[$('category').value];return [...$('topicRows').querySelectorAll('.topicPick:checked')].map(c=>t.words[Number(c.dataset.index)]).map(w=>({de:w[0],uk:w[1]}))}
+async function playClip(text,lang,token){
+ const wanted=lang==='de'?'de-DE':'uk-UA';
+ for(let attempt=1;attempt<=3;attempt++){
+  if(!playing||token!==generation)return false;
+  try{
+   audioController=new AbortController();
+   const response=await fetch('/.netlify/functions/tts',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({text,lang:wanted}),signal:audioController.signal
+   });
+   if(!response.ok){
+    let message='Помилка сервера озвучення.';
+    try{const problem=await response.json();if(problem.error)message=problem.error}catch(e){}
+    throw new Error(message);
+   }
+   const data=await response.json();
+   if(!data.audioContent)throw new Error('Сервер не повернув аудіо.');
+   if(!playing||token!==generation)return false;
+   const raw=atob(data.audioContent),bytes=new Uint8Array(raw.length);
+   for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+   const url=URL.createObjectURL(new Blob([bytes],{type:'audio/mpeg'}));
+   const a=new Audio(url);a.preload='auto';a.playbackRate=Number($('speed').value)||1;audio=a;
+   const ok=await new Promise(resolve=>{
+    let settled=false;
+    const finish=value=>{if(settled)return;settled=true;a.onended=a.onerror=null;clearTimeout(watchdog);if(audio===a)audio=null;URL.revokeObjectURL(url);resolve(value)};
+    const watchdog=setTimeout(()=>{a.pause();finish(false)},30000);
+    a.onended=()=>finish(true);a.onerror=()=>finish(false);
+    a.play().catch(()=>finish(false));
+   });
+   audioController=null;
+   if(ok)return true;
+   throw new Error('Не вдалося відтворити отриманий аудіофайл.');
+  }catch(err){
+   audioController=null;
+   if(!playing||token!==generation||err.name==='AbortError')return false;
+   if(attempt<3){playStatus(`Озвучення тимчасово недоступне. Повторюю спробу ${attempt+1} з 3…`);await delay(1000*attempt,token)}
+   else playStatus(`Помилка озвучення (${wanted}): ${err.message}`);
+  }
+ }
+ return false;
+}
+function delay(ms,t){return new Promise(resolve=>{timer=setTimeout(()=>resolve(playing&&t===generation),ms)})}
+async function run(t){while(playing&&t===generation&&queue.length){const e=queue[index],times=Number($('repeat').value);for(let n=1;n<=times;n++){if(!playing||t!==generation)return;playStatus(`${e.de}: повтор ${n} з ${times} — німецька`);if(!await playClip(e.de,'de',t)){stop();return}if(!await delay(350,t))return;playStatus(`${e.uk}: повтор ${n} з ${times} — українська`);if(!await playClip(e.uk,'uk',t)){stop();return}if(n<times&&!await delay(Number($('repeatGap').value)*1000,t))return}if(!await delay(Number($('gap').value)*1000,t))return;if(index<queue.length-1)index++;else if($('loop').checked)index=0;else{stop();playStatus('Список завершено.');return}renderQueue()}}
+
+$('createCategory').addEventListener('click',createCustomCategory);
+$('startReview').addEventListener('click',()=>{reviewUnlimited=false;reviewedCount=0;$('startUnlimited').style.display='inline-block';$('stopUnlimited').style.display='none';chooseReviewCard();});
+$('startUnlimited').addEventListener('click',()=>{if(!dictionary.length){$('reviewStatus').textContent='Спочатку додай слова до словника.';return}reviewUnlimited=true;reviewedCount=0;reviewCursor=0;$('startUnlimited').style.display='none';$('stopUnlimited').style.display='inline-block';chooseReviewCard();$('reviewStatus').textContent='Вільний режим: слова можна повторювати скільки завгодно разів. Оцінки все одно зберігають твій прогрес.';});
+$('stopUnlimited').addEventListener('click',()=>{reviewUnlimited=false;$('stopUnlimited').style.display='none';$('startUnlimited').style.display='inline-block';chooseReviewCard();$('reviewStatus').textContent='Вільне тренування завершено. Можеш продовжити за розкладом або знову ввімкнути вільний режим.';});
+$('showReviewAnswer').addEventListener('click',()=>{if(!reviewCard)return;$('reviewUk').style.display='block';$('reviewRatings').style.display='flex';$('showReviewAnswer').style.display='none';});
+$('reviewRatings').addEventListener('click',e=>{const b=e.target.closest('button[data-rating]');if(b)rateReview(b.dataset.rating)});
+$('reviewAudio').addEventListener('click',async()=>{if(!reviewCard){$('reviewStatus').textContent='Спочатку натисни «Почати повторення».';return}const token=++generation;if(audio){audio.pause();audio=null}playing=true;await playClip(reviewCard.de,'de',token);playing=false;});
+
+$('category').addEventListener('change',renderTopic);$('deleteCustomCategory').addEventListener('click',deleteCustomCategory);
+$('selectTopic').addEventListener('click',()=>{$('topicRows').querySelectorAll('.topicPick').forEach(c=>c.checked=true)});
+$('topicToDict').addEventListener('click',()=>{const a=chosenTopic();if(!a.length){$('topicStatus').textContent='Спочатку вибери слова.';return}let n=0;a.forEach(e=>{if(!dictionary.some(d=>d.de.toLocaleLowerCase()===e.de.toLocaleLowerCase())){dictionary.push(ensureCardFields({...e}));n++}});renderDict();renderReviewStats();save();$('topicStatus').textContent=`До словника додано ${n} нових слів.`});
+$('topicToQueue').addEventListener('click',()=>{const a=chosenTopic();if(!a.length){$('topicStatus').textContent='Спочатку вибери слова.';return}addQueue(a);$('topicStatus').textContent=`В аудіосписок додано вибрані слова.`});
+$('addTranslate').addEventListener('click',translateWords);
+$('wordDirection').addEventListener('change',()=>{
+ const uk=$('wordDirection').value==='uk-de';
+ $('newWordsLabel').firstChild.textContent=uk?'Введи українські слова — по одному на рядок':'Введи німецькі слова — по одному на рядок';
+ $('newWords').placeholder=uk?'Вода\nРобота\nБудинок':'Wasser\nArbeit\nHaus';
+ $('example').textContent=uk?'Приклад українською':'Приклад німецькою';
+ $('newWords').value='';
+ $('addStatus').textContent=uk?'Введи українські слова — програма перекладе їх німецькою.':'Введи німецькі слова — програма перекладе їх українською.';
+});
+$('example').addEventListener('click',()=>{
+ const uk=$('wordDirection').value==='uk-de';
+ $('newWords').value=uk?'Вода\nРобота\nБудинок\nЛюбов\nНавчатися':'Wasser\nArbeit\nHaus\nLiebe\nLernen';
+ translateWords();
+});
+$('search').addEventListener('input',renderDict);$('selectVisible').addEventListener('click',()=>{$('dictRows').querySelectorAll('.pick').forEach(c=>c.checked=true)});
+$('addSelected').addEventListener('click',()=>{const a=[...$('dictRows').querySelectorAll('.pick:checked')].map(c=>dictionary[Number(c.dataset.index)]);if(!a.length){playStatus('Спочатку вибери слова у словнику.');return}addQueue(a)});
+$('deleteSelected').addEventListener('click',()=>{const ids=[...$('dictRows').querySelectorAll('.pick:checked')].map(c=>Number(c.dataset.index)).sort((a,b)=>b-a);if(!ids.length)return;if(!confirm(`Видалити ${ids.length} слів зі словника?`))return;ids.forEach(i=>dictionary.splice(i,1));renderDict();renderReviewStats();save()});
+$('dictRows').addEventListener('click',e=>{const edit=e.target.closest('.editWord');if(edit){editDictionaryWord(Number(edit.dataset.index));return}const b=e.target.closest('.remove');if(!b)return;dictionary.splice(Number(b.dataset.index),1);renderDict();renderReviewStats();save()});
+$('topicRows').addEventListener('click',e=>{const edit=e.target.closest('.editTopicWord');if(edit){editTopicWord(Number(edit.dataset.index));return}const del=e.target.closest('.deleteTopicWord');if(del)deleteTopicWord(Number(del.dataset.index));});
+$('queueRows').addEventListener('click',e=>{const b=e.target.closest('.qremove');if(!b)return;stop();queue.splice(Number(b.dataset.index),1);index=Math.min(index,Math.max(0,queue.length-1));renderQueue()});
+$('clearQueue').addEventListener('click',()=>{stop();queue=[];index=0;renderQueue();playStatus('Аудіосписок очищено. Словник залишився.')});
+$('play').addEventListener('click',()=>{if(playing){stop();playStatus('Пауза. Натисни «Відтворити», щоб продовжити.');return}if(!queue.length){playStatus('Додай слова до аудіосписку.');return}playing=true;const t=++generation;$('play').textContent='⏸ Пауза';run(t)});
+$('prev').addEventListener('click',()=>{stop();if(queue.length){index=(index-1+queue.length)%queue.length;renderQueue()}});
+$('next').addEventListener('click',()=>{stop();if(queue.length){index=(index+1)%queue.length;renderQueue()}});
+
+$('addSentences').addEventListener('click',addSentenceLines);
+$('sentenceSearch').addEventListener('input',renderSentences);
+$('sentencesToQueue').addEventListener('click',()=>{const a=[...$('sentenceRows').querySelectorAll('.sentencePick:checked')].map(c=>sentences[Number(c.dataset.index)]);if(!a.length){$('sentenceStatus').textContent='Спочатку вибери речення.';return}addQueue(a);$('sentenceStatus').textContent=`До аудіосписку додано ${a.length} речень.`});
+$('deleteSentences').addEventListener('click',()=>{const ids=[...$('sentenceRows').querySelectorAll('.sentencePick:checked')].map(c=>Number(c.dataset.index)).sort((a,b)=>b-a);if(!ids.length)return;if(!confirm(`Видалити ${ids.length} речень?`))return;ids.forEach(i=>sentences.splice(i,1));renderSentences();save()});
+$('exportData').addEventListener('click',()=>{const payload={app:'Deutsch Hören',version:18,exportedAt:new Date().toISOString(),dictionary,queue,sentences,customTopics};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='deutsch-hoeren-backup.json';a.click();URL.revokeObjectURL(url);try{localStorage.setItem(BKEY,String(Date.now()))}catch(e){}$('backupStatus').textContent='Резервну копію завантажено.'});
+$('importData').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!data||!Array.isArray(data.dictionary))throw Error();if(!confirm('Імпортувати дані? Наявні записи буде об’єднано, дублікати не додаватимуться.'))return;
+ const merge=(target,items)=>{(Array.isArray(items)?items:[]).forEach(x=>{if(x&&typeof x.de==='string'&&typeof x.uk==='string'&&!target.some(y=>y.de.toLocaleLowerCase()===x.de.toLocaleLowerCase()))target.push({...x})})};
+ merge(dictionary,data.dictionary);merge(queue,data.queue);merge(sentences,data.sentences);if(data.customTopics&&typeof data.customTopics==='object')Object.assign(customTopics,data.customTopics);index=0;Object.entries(customTopics).forEach(([k,v])=>{if(!$('category').querySelector('option[value="'+k+'"]')){const o=document.createElement('option');o.value=k;o.textContent=v.title+' · моя категорія';$('category').appendChild(o)}});dictionary.forEach(ensureCardFields);renderTopic();renderDict();renderSentences();renderQueue();renderReviewStats();save();$('backupStatus').textContent='Імпорт завершено. Дані об’єднано без дублікатів.';
+ }catch(err){$('backupStatus').textContent='Не вдалося прочитати файл. Вибери резервну копію Deutsch Hören у форматі JSON.'}finally{e.target.value=''}});
+
+$('speed').addEventListener('change',()=>{const rate=Number($('speed').value);if(audio)audio.playbackRate=rate;save();playStatus(`Швидкість озвучення: ${rate.toLocaleString('uk-UA')}×`)});
+['repeat','repeatGap','gap','loop'].forEach(id=>$(id).addEventListener('change',save));
+try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d){dictionary=Array.isArray(d.dictionary)?d.dictionary:[];queue=Array.isArray(d.queue)?d.queue:[];sentences=Array.isArray(d.sentences)?d.sentences:[];customTopics=d.customTopics&&typeof d.customTopics==='object'?d.customTopics:{};index=Math.min(Number(d.index)||0,Math.max(0,queue.length-1));if(['1','2','3'].includes(d.repeat))$('repeat').value=d.repeat;if(['0.5','0.75','1','1.25','1.5','2'].includes(d.speed))$('speed').value=d.speed;if(['0.5','1','2','3'].includes(d.repeatGap))$('repeatGap').value=d.repeatGap;if(['1','2','4','6'].includes(d.gap))$('gap').value=d.gap;$('loop').checked=d.loop!==false}}catch(e){}
+Object.entries(customTopics).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.title+' · моя категорія';$('category').appendChild(o)});dictionary.forEach(ensureCardFields);renderTopic();renderDict();renderSentences();renderQueue();renderReviewStats();
+try{const t=Number(localStorage.getItem(BKEY)),bs=$('backupStatus');if(bs&&(dictionary.length||sentences.length)){if(!t)bs.textContent='⚠️ Резервну копію ще не робили. Зроби експорт, щоб не втратити слова.';else{const d=Math.floor((Date.now()-t)/86400000);bs.textContent=d>=14?`⚠️ Остання резервна копія була ${d} дн. тому — час зробити нову.`:`Остання резервна копія: ${new Date(t).toLocaleDateString('uk-UA')}.`}}}catch(e){}
+})();
+</script></body></html>
